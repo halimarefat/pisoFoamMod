@@ -64,9 +64,21 @@ int main(int argc, char *argv[])
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
         #include "CourantNo.H"
-
+	
         // Pressure-velocity PISO corrector
         {
+            // get a list of (x,y,z)
+	    const volVectorField& cell = mesh.C();
+	    forAll(cell, i)
+	    {
+	       const vector& C = cell[i];
+	       scalar x = C[0];
+	       scalar y = C[1];
+	       scalar z = C[2];
+	       // set Cd=0 outside a unit sphere
+	       scalar Cd = x*x + y*y + z*z - 1 < 0.0 ? 1.0 : 0.0;	    
+	    }
+	    
             #include "UEqn.H"
 
             // --- PISO loop
