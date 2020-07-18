@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 	       scalar y = C[1];
 	       scalar z = C[2];
 	       // set Cd=0 outside a unit sphere
-	       scalar Cd = x*x + y*y + z*z - 1 < 0.0 ? 1.0 : 0.0;	    
+	       Cd = x*x + y*y + z*z - 1 < 0.0 ? 1.0 : 0.0;	    
 	    }
 	    
             #include "UEqn.H"

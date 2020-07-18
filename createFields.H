@@ -26,6 +26,7 @@ volVectorField U
     mesh
 );
 
+Info<< "Reading field Cd\n" << endl;
 volScalarField Cd
 (
     IOobject
